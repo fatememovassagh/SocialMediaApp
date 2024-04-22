@@ -1,11 +1,15 @@
-import './index.css'
+import "./index.css";
+import { Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Home from "./container/Home";
 
-export const App =()=> {
-    return(
-    <span className="font-bold ">
-        Hello world!
-    </span>);
-}
-
+export const App = () => {
+  return (
+    <Routes>
+      <Route path="login" element={<Login />} />
+      <Route path="/*" element={<Home />} />
+    </Routes>
+  );
+};
 
 export default App;

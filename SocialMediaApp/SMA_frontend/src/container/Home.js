@@ -8,12 +8,11 @@ import { userQuery } from "../utils/data";
 import { client } from "../client";
 import { AiFillCloseCircle } from "react-icons/ai";
 import UserProfile from "../components/UserProfile";
+import { fetchUser } from "../utils/fetchUser";
 
 const Home = () => {
-  const userInfo =
-    localStorage.getItem("user") !== undefined
-      ? JSON.parse(localStorage.getItem("user"))
-      : localStorage.clear();
+  const userInfo = fetchUser();
+
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
   const scrollRef = useRef(null);

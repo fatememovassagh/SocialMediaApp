@@ -11,14 +11,10 @@ const Pin = ({
   pin: { image, url, destination, postedBy, title, _id, save },
 }) => {
   const user = fetchUser();
-  const alreadySaved = !!save?.filter((item) => item?.postedBy._id === user.sub)
-    ?.length;
-  console.log(
-    "alreadySaved",
-    alreadySaved,
-    save,
-    save?.filter((item) => item.postedBy._id === user.sub),
-  );
+  const alreadySaved = !!save?.filter(
+    (item) => item?.postedBy._id === user?.sub,
+  )?.length;
+
   const navigate = useNavigate();
   const [postHover, setPostHover] = useState(false);
   const [savingPost, setSavingPost] = useState();
@@ -31,8 +27,8 @@ const Pin = ({
         .insert("after", "save[-1]", [
           {
             _key: uuidv4(),
-            userId: user.sub,
-            postedBy: { _type: "postedBy", _ref: user.sub },
+            userId: user?.sub,
+            postedBy: { _type: "postedBy", _ref: user?.sub },
           },
         ])
         .commit()
@@ -53,7 +49,7 @@ const Pin = ({
         className="relative cursor-zoom-in w-auto hover:shadow-2xl rounded-lg overflow-hidden transition-all duration-500 ease-in-out"
         onMouseEnter={() => setPostHover(true)}
         onMouseLeave={() => setPostHover(false)}
-        onClick={() => navigate(`./pin_detail/${_id}`)}
+        onClick={() => navigate(`/pin_detail/${_id}`)}
       >
         <img
           className="rounded-lg w-full"
@@ -114,7 +110,7 @@ const Pin = ({
                     : destination.slice(8)}
                 </a>
               )}
-              {postedBy?._id === user.sub ? (
+              {postedBy?._id === user?.sub ? (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();

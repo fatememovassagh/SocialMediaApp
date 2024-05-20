@@ -22,7 +22,7 @@ const Pins = ({ user }) => {
           <Route path="/" element={<Feed />}></Route>
           <Route path="/category/:categoryId" element={<Feed />}></Route>
           <Route
-            path="/pinDetail/:pinId"
+            path="/pin_detail/:pinId"
             element={<PinDetail user={user} />}
           ></Route>
           <Route path="/create-pin" element={<CreatePin user={user} />}></Route>

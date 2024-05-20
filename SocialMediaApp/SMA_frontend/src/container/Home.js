@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Pins from "./Pins";
 import { HiMenu } from "react-icons/hi";
@@ -15,17 +15,17 @@ const Home = () => {
 
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
-  const scrollRef = useRef(null);
+  // const scrollRef = useRef(null);
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
     client.fetch(query).then((data) => setUser(data[0]));
   }, [userInfo?.sub]);
 
-  useEffect(() => {
-    return () => {
-      scrollRef.current.scrollTo(0, 0);
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     // scrollRef.current.scrollTo(0, 0);
+  //   };
+  // }, []);
 
   return (
     <div className="flex md:flex-row flex-col transition-height bg-gray-50 h-screen duration-75 ease-out">
@@ -43,7 +43,7 @@ const Home = () => {
             <img src={logo} className="w-28" alt="logo" />
           </Link>
 
-          <Link to={`/User-Profile/${user?._id}`}>
+          <Link to={`/user-profile/${user?._id}`}>
             <img src={user?.image} className="w-28" alt="logo" />
           </Link>
         </div>
@@ -61,9 +61,13 @@ const Home = () => {
         )}
       </div>
 
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
+      <div className="pb-2 flex-1 h-screen overflow-y-scroll">
+        {/*<div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>*/}
         <Routes>
-          <Route path={`/UserProfile/:userId`} element={<UserProfile />} />
+          <Route
+            path={`/user-profile/:userId`}
+            element={<UserProfile user={user} />}
+          />
           <Route path={`/*`} element={<Pins user={user && user} />} />
         </Routes>
       </div>

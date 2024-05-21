@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 import Pins from "./Pins";
 import { HiMenu } from "react-icons/hi";
 import { Link, Route, Routes } from "react-router-dom";
-import logo from "../assets/ArtoPho.png";
+import logo from "../assets/logo_bgTransparent_lighttheme.png";
 import { userQuery } from "../utils/data";
 import { client } from "../client";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -44,7 +44,7 @@ const Home = () => {
           </Link>
 
           <Link to={`/user-profile/${user?._id}`}>
-            <img src={user?.image} className="w-28" alt="logo" />
+            <img src={user?.image} className="w-12" alt="logo" />
           </Link>
         </div>
         {toggleSidebar && (

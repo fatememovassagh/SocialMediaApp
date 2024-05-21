@@ -114,12 +114,12 @@ const PinDetail = ({ user }) => {
 
           <div className="flex flex-wrap mt-6 gap-3">
             <Link
-              to={`user-profile/${pinDetail.postedBy?._id}`}
-              className="flex gap-2   items-center bg-white rounded-lg"
+              to={`user-profile/${user._id}`}
+              className="flex gap-2 items-center bg-white rounded-lg"
             >
               <img
                 className="w-10 h-10 rounded-full cursor-pointer"
-                src={pinDetail.postedBy?.image}
+                src={user.image}
                 alt="user-profile"
               />
             </Link>
@@ -164,7 +164,7 @@ const PinDetail = ({ user }) => {
           <MasonryLayout pins={pins} />
         </>
       ) : (
-        <Spinner message="loading more pins "></Spinner>
+        <div className="mt-3 text-center">There is no related pin.</div>
       )}
     </>
   );

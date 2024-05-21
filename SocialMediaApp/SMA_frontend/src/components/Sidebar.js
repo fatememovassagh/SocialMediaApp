@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/ArtoPho.png";
+import logo from "../assets/logo_bgTransparent_lighttheme.png";
 import { AiFillHome } from "react-icons/ai";
 import { FcNext } from "react-icons/fc";
 import { categories } from "../utils/data";
